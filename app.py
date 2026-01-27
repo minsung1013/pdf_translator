@@ -13,8 +13,9 @@ def load_model():
 
 model = load_model()
 
-st.title("PDF 번역기")
+st.title("흑염소 PDF 번역기")
 st.write("영어 PDF를 한국어로 번역합니다")
+st.write("PDFMathTranslate 기능 사용")
 
 uploaded_file = st.file_uploader("PDF 파일을 드래그하세요", type="pdf")
 
