@@ -1,3 +1,8 @@
+import os
+os.environ["NOTO_FONT_PATH"] = "/tmp/noto.ttf"
+os.environ["XDG_CACHE_HOME"] = "/tmp/.cache"
+os.environ["HF_HOME"] = "/tmp/.cache/huggingface"
+
 import streamlit as st
 from pdf2zh import translate_stream
 from pdf2zh.doclayout import OnnxModel
