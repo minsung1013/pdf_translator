@@ -19,12 +19,36 @@ st.info("💡 수식과 표가 포함된 논문도 번역 가능합니다")
 
 st.markdown("---")
 
+# 모바일 사용자 안내
+with st.expander("📱 모바일에서 PDF 파일 찾기"):
+    st.markdown("""
+    **PDF 파일이 안 보이나요?**
+
+    1. 📂 **다운로드 폴더** 확인
+       - 대부분의 PDF는 '다운로드' 또는 'Download' 폴더에 있습니다
+
+    2. 🔍 **파일 관리자 사용**
+       - '내 파일' 또는 'Files' 앱에서 PDF 검색
+       - 검색창에 ".pdf" 입력
+
+    3. 📧 **이메일/메시지에서 다운로드**
+       - PDF를 받은 경우, 먼저 다운로드하세요
+       - 다운로드 후 여기서 선택
+
+    4. ☁️ **클라우드 저장소**
+       - Google Drive, OneDrive 등에서 먼저 다운로드
+    """)
+
 uploaded_file = st.file_uploader(
-    "📂 PDF 파일 선택",
+    "📂 PDF 파일 선택 (클릭하여 파일 찾기)",
     type=["pdf"],
     accept_multiple_files=False,
-    help="클릭하여 파일을 선택하거나 드래그하세요"
+    help="PDF 파일만 업로드 가능합니다"
 )
+
+if not uploaded_file:
+    st.warning("⬆️ 위의 '📂 PDF 파일 선택' 버튼을 눌러 PDF 파일을 선택하세요")
+    st.caption("💡 파일을 찾을 수 없다면 위의 '📱 모바일에서 PDF 파일 찾기'를 펼쳐보세요")
 
 if uploaded_file:
     st.success(f"✅ 파일 업로드 완료: {uploaded_file.name}")
