@@ -32,7 +32,14 @@ if uploaded_file:
         st.error("❌ PDF 파일만 업로드 가능합니다. 다른 파일을 선택해주세요.")
         st.stop()
 
-    st.success(f"✅ 파일 업로드 완료: {uploaded_file.name}")
+    # 파일 크기 확인
+    file_size_mb = uploaded_file.size / (1024 * 1024)
+
+    st.success(f"✅ 파일 업로드 완료: {uploaded_file.name} ({file_size_mb:.1f}MB)")
+
+    # 큰 파일 경고
+    if file_size_mb > 100:
+        st.warning(f"⚠️ 파일 크기가 {file_size_mb:.1f}MB로 큽니다. 번역에 시간이 오래 걸릴 수 있습니다.")
 
     if st.button("🚀 번역 시작", use_container_width=True):
         try:
